@@ -1,3 +1,17 @@
+// From https://web.dev/articles/css-module-scripts
+
+import sheet from './styles.css' assert { type: 'css' };
+document.adoptedStyleSheets = [sheet];
+shadowRoot.adoptedStyleSheets = [sheet];
+
+// From https://web.dev/articles/css-module-scripts
+const cssModule = await import('./style.css', {
+    assert: { type: 'css' }
+  });
+  document.adoptedStyleSheets = [cssModule.default];
+
+
+
 let slideIndex = 0;
 const slides = document.querySelectorAll('.carousel-slide');
 const prevBtn = document.querySelector('.prev');
